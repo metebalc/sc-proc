@@ -20,7 +20,7 @@ architecture Structural of ExecutionUnit is
     signal B_intermediate: std_logic_vector(N-1 downto 0);
 
     signal Sum: std_logic_vector(N-1 downto 0);
-    signal Carry: std_logic_vector(N-1 downto 0);
+    signal Carry: std_logic;
 
     signal A_intermediate: std_logic_vector(N-1 downto 0);
 
@@ -37,6 +37,9 @@ architecture Structural of ExecutionUnit is
     signal ArithmeticShiftResult: std_logic_vector(N-1 downto 0);
 
     signal logicOut: std_logic_vector(N-1 downto 0);
+
+    signal Ovfl: std_logic;
+    signal Zero, AltBu, AltB: std_logic;
 begin
     FuncClass <= ExUFunc(7 downto 6);
     LogicFn <= ExUFunc(5 downto 4);
@@ -64,6 +67,11 @@ begin
             Sum => Sum,
             Cout => Carry
         );
+
+    Ovfl <= (not (A(N-1) xor B_intermediate(N-1))) and (A(N-1) xor Sum(N-1));
+    Zero <= not (or Sum);
+    AltB  <= Sum(N-1) xor Ovfl;
+    AltBu <= not Carry;
 
     --Shifters
     ShiftMUX: entity work.Mux2to1_N generic map(N => N)
@@ -142,4 +150,15 @@ begin
         );
 
     --Determining ExUOut and other outs
+    ExUStatus <= Zero & AltB & AltBu;
+
+    FuncClassMux: entity work.Mux4to1_N generic map(N => N)
+        port map(
+            A => ArithmeticShiftResult,
+            B => logicOut,
+            C => (N-1 downto 1 => '0') & AltB,
+            D => (N-1 downto 1 => '0') & AltBu,
+            S => FuncClass,
+            Y => ExUOut
+        );
 end Structural;
