@@ -18,7 +18,7 @@ The processor consists of the following modules:
 ### Processor Architecture
 The following diagram illustrates the complete single-cycle RISC-V processor design.
 
-![Single-Cycle Processor Architecture](docs/processor-block-diagram.png)
+![Single-Cycle Processor Architecture](.github/docs/processor-block-diagram.png)
 ## 2. Implementation
 
 ### Execution Unit (ExU)
@@ -31,7 +31,7 @@ The following diagram illustrates the complete single-cycle RISC-V processor des
 #### Execution Unit Architecture
 The following diagram illustrates the complete execution unit design.
 
-![Execution Unit Architecture](docs/exu-block-diagram.png)
+![Execution Unit Architecture](.github/docs/exu-block-diagram.png)
 
 ### Control Unit (CU)
 - Opcode, Funct3, and Funct7 decoders
@@ -41,7 +41,7 @@ The following diagram illustrates the complete execution unit design.
 #### Control Unit Architecture
 The following diagram illustrates the complete control unit design.
 
-![Control Unit Architecture](docs/cu-block-diagram.png)
+![Control Unit Architecture](.github/docs/cu-block-diagram.png)
 
 ### Next Address Logic (NAL)
 - Branch condition checking
@@ -52,7 +52,7 @@ The following diagram illustrates the complete control unit design.
 #### Next Address Logic Architecture
 The following diagram illustrates the complete NAL design.
 
-![Next Address Logic](docs/nal-block-diagram.png)
+![Next Address Logic](.github/docs/nal-block-diagram.png)
 
 ## 3. Test Vectors
 
