@@ -1,0 +1,43 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# GHDL simulation files
+work-obj*.cf
+*.ghw
+*.vcd
+*.fst
+
+# ModelSim / QuestaSim
+work/
+transcript
+vsim.wlf
+*.wlf
+modelsim.ini
+
+# Quartus generated files
+db/
+incremental_db/
+output_files/
+*.qws
+*.rpt
+*.sof
+*.pof
+
+# Temporary and backup files
+*.bak
+*.tmp
+*.log
+
+# Python cache (for test scripts)
+__pycache__/
+*.pyc
+.pytest_cache/
